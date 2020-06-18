@@ -34,7 +34,7 @@ EOL;
 $fileList = glob(__DIR__.'/app/*.php',GLOB_BRACE);
 
 if(empty($fileList)){
-        $str = <<<EOL
+    $str = <<<EOL
 无消费者程序可执行\n
 EOL;
     echo $str;
@@ -67,11 +67,11 @@ EOL;
             exec('nohup php '.$val.' >> '.__DIR__.'/log/run.log &');
         }
         $noticeMsg = <<<EOL
-程序启动成功\n
+程序重启成功\n
 EOL;
         break;
     case 'stop':
-         foreach ($fileList as $val){
+        foreach ($fileList as $val){
             exec('ps aux |grep '.$val.'|grep -v grep|awk \'{print $2}\'|xargs kill -9');
         }
         $noticeMsg = <<<EOL
